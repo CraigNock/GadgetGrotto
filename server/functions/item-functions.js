@@ -2,19 +2,19 @@ const items = require("../data/items.json");
 
 // customized sort function (code found at https://www.sitepoint.com/sort-an-array-of-objects-in-javascript)
 const sortByStock = (a, b) => {
-    const stockA = a.numInStock;
-    const stockB = b.numInStock;
+  const stockA = a.numInStock;
+  const stockB = b.numInStock;
 
-    let comparison = 0;
+  let comparison = 0;
 
-    if (stockB > stockA) {
-        comparison = 1;
-    }
-    else {
-        comparison = -1;
-    }
+  if (stockB > stockA) {
+    comparison = 1;
+  }
+  else {
+    comparison = -1;
+  }
 
-    return comparison
+  return comparison
 }
 
 // ****************************************************************** //
@@ -22,17 +22,17 @@ const sortByStock = (a, b) => {
 // ****************************************************************** //
 const sortCategory = (req) => {  
 
-    //category of items specified in the url
-    const { category } = req.params;
+  //category of items specified in the url
+  const { category } = req.params;
 
-    // filters the items by category into a new array
-    let filteredItems = items.filter((item) => {
-        if (item.category === category) {
-            return item;
-        }
-    });
+  // filters the items by category into a new array
+  let filteredItems = items.filter((item) => {
+    if (item.category === category) {
+      return item;
+    }
+  });
 
-    return filteredItems;
+  return filteredItems;
 };
 
 
@@ -41,23 +41,23 @@ const sortCategory = (req) => {
 // ****************************************************************** //
 const getSearchResults = (req) => {  
 
-    const { userInput } = req.params;
+  const { userInput } = req.params;
 
-    // filters the items based on the user's input
-    let getSearchResults = items.filter((item) => {
-        if (item.name.toLowerCase().includes(userInput.toLowerCase())) {
-            return item;
-        }
-    });
+  // filters the items based on the user's input
+  let getSearchResults = items.filter((item) => {
+    if (item.name.toLowerCase().includes(userInput.toLowerCase())) {
+      return item;
+    }
+  });
 
-    // if the user has searched for a specific category, returns all items in the related category, priority goes to the names above
-    items.filter((item) => {
-        if (item.category.toLowerCase().includes(userInput.toLowerCase())) {
-            getSearchResults.push(item);
-        }
-    });
+  // if the user has searched for a specific category, returns all items in the related category, priority goes to the names above
+  items.filter((item) => {
+    if (item.category.toLowerCase().includes(userInput.toLowerCase())) {
+      getSearchResults.push(item);
+    }
+  });
 
-    return getSearchResults;
+  return getSearchResults;
 };
 
 
@@ -66,18 +66,18 @@ const getSearchResults = (req) => {
 // ********************************************** //
 const getItemInformation = (req) => {  
 
-    const {itemId} = req.params;
+  const {itemId} = req.params;
 
-    // wiwll be used to determine the position of the required item
-    let position;
+  // wiwll be used to determine the position of the required item
+  let position;
 
-    items.forEach((item, index) => {
-        if (item.id == itemId){
-            position = index;
-        }
-    })
+  items.forEach((item, index) => {
+    if (item.id == itemId){
+      position = index;
+    }
+  })
 
-    return(items[position]);
+  return(items[position]);
 }
 
 
@@ -86,21 +86,21 @@ const getItemInformation = (req) => {
 // *********************************** //
 const getCategories = () => {  
 
-    let types = [];
+  let types = [];
 
-    const makeTypes = () => {
-        items.forEach((item) => {
-            types.push(item.category);
-        });
-    };
+  const makeTypes = () => {
+    items.forEach((item) => {
+      types.push(item.category);
+    });
+  };
 
-    makeTypes();
+  makeTypes();
 
-    unique = (value, index, self) => {
-        return self.indexOf(value) === index;
-    };
+  unique = (value, index, self) => {
+    return self.indexOf(value) === index;
+  };
 
-    return(types.filter(unique));
+  return(types.filter(unique));
 }
 
 
@@ -109,31 +109,31 @@ const getCategories = () => {
 // ******************************************************************************************************* //
 const getHomepage = () => {  
 
-    // constant of how many items we want displayed
-    const NUM_OF_ITEMS = 3;
+  // constant of how many items we want displayed
+  const NUM_OF_ITEMS = 3;
 
-    // cloning the items file so as to not change the order
-    const sortedItems = [...items];
-    
-    sortedItems.sort(sortByStock);
+  // cloning the items file so as to not change the order
+  const sortedItems = [...items];
+  
+  sortedItems.sort(sortByStock);
 
-    // the arrays that are used to select the items displayed on the homepage
-    let itemsOnSale = [];
-    let featuredItems = [];
+  // the arrays that are used to select the items displayed on the homepage
+  let itemsOnSale = [];
+  let featuredItems = [];
 
-    // sets random items in the featuredItems array | sets the 3 first items with the highest stock in the itemsOnSale array
-    for (let i = 0; i < NUM_OF_ITEMS; ++i) {
-        featuredItems.push(items[Math.floor(Math.random() * items.length)]);
-        itemsOnSale.push(sortedItems[i]);
-    }
+  // sets random items in the featuredItems array | sets the 3 first items with the highest stock in the itemsOnSale array
+  for (let i = 0; i < NUM_OF_ITEMS; ++i) {
+      featuredItems.push(items[Math.floor(Math.random() * items.length)]);
+      itemsOnSale.push(sortedItems[i]);
+  }
 
-    return { sale: itemsOnSale, feature: featuredItems };
+  return { sale: itemsOnSale, feature: featuredItems };
 };
 
 module.exports = {
-    getHomepage,
-    sortCategory,
-    getCategories,
-    getItemInformation,
-    getSearchResults,
+  getHomepage,
+  sortCategory,
+  getCategories,
+  getItemInformation,
+  getSearchResults,
 };

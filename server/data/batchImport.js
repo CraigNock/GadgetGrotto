@@ -2,8 +2,8 @@ const { MongoClient } = require('mongodb');
 const fs = require('file-system');
 const assert = require('assert');
 
-const companies = JSON.parse(fs.readFileSync('./fixedCompanies.json'));
-const items = JSON.parse(fs.readFileSync('./fixedItems.json'));
+const companies = JSON.parse(fs.readFileSync('data/fixedCompanies.json'));
+const items = JSON.parse(fs.readFileSync('data/fixedItems.json'));
 
 
 const batchImport = async () => {
@@ -32,4 +32,4 @@ const batchImport = async () => {
   console.log('disconnecto');
 };
 
-batchImport();
+// batchImport();
