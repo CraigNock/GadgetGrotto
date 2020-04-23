@@ -26,7 +26,7 @@ const CartItem = ({ id, name, price, quantity, stock, imageSrc }) => {
             X
           </StyledButton>
         </Title>
-        <p>
+        <div>
           <QtyField>
             <span style={{ gridArea: 'qty' }}>Quantity:</span>{' '}
             <span
@@ -71,7 +71,7 @@ const CartItem = ({ id, name, price, quantity, stock, imageSrc }) => {
           >
             max
           </MaxSpan>
-        </p>
+        </div>
         <p>@ {price}</p>
       </InfoDiv>
     </StyledDiv>

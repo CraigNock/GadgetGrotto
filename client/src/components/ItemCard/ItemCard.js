@@ -36,16 +36,16 @@ const ItemCard = ({ product }) => {
     <Wrapper
       onClick={() => dispatch(setProductDetailsFromCard(product))}
       to={`/product/${_id}`}
-      COLORS={COLORS}
+      colors={COLORS}
     >
       <img src={imageSrc} alt="itempic" />
       <div>{name}</div>
       {isOnSale ? (
         <div style={{ display: 'flex' }}>
-          <StruckThru style={{ position: 'relative', top: 18 }} COLORS={COLORS}>
+          <StruckThru style={{ position: 'relative', top: 18 }} colors={COLORS}>
             {price}
           </StruckThru>
-          <Special COLORS={COLORS}>
+          <Special colors={COLORS}>
             <span
               style={{ position: 'relative', top: 14 }}
             >{`$${discountPrice.toFixed(2)}`}</span>
@@ -59,7 +59,7 @@ const ItemCard = ({ product }) => {
 };
 
 const Special = styled.div`
-  color: ${(props) => props.COLORS.background};
+  color: ${(props) => props.colors.background};
   padding: 4px;
   z-index: 2;
   background-image: url(${starburst});
@@ -71,7 +71,7 @@ const Special = styled.div`
 
 const StruckThru = styled.span`
   text-decoration: line-through;
-  color: ${(props) => props.COLORS.filter};
+  color: ${(props) => props.colors.filter};
   margin-right: 8px;
 `;
 
@@ -84,13 +84,13 @@ const Wrapper = styled(Link)`
   height: 360px;
   padding: 10px;
   margin: 10px 0;
-  box-shadow: 5px 5px 5px grey, 5px 5px 8px ${(props) => props.COLORS.header};
+  box-shadow: 5px 5px 5px grey, 5px 5px 8px ${(props) => props.colors.header};
   color: black;
   text-decoration: none;
   text-align: center;
   border-radius: 5px;
   transition: 250ms ease-in-out;
-  background: ${(props) => props.COLORS.background};
+  background: ${(props) => props.colors.background};
   &:hover {
     transform: scale(1.01);
   }

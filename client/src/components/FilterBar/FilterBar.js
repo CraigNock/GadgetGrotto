@@ -11,7 +11,7 @@ const FilterBar = () => {
   const COLORS = useSelector((state) => state.designSetting);
   const baseItems = useSelector((state) => state.filters.baseItems);
   const sortOption = useSelector((state) => state.filters.sortOption);
-  console.log(sortOption);
+  // console.log(sortOption);
   const dispatch = useDispatch();
   const [filter, setFilter] = useState({
     bodyLocation: {
@@ -85,7 +85,7 @@ const FilterBar = () => {
   // function to handle radio button (category) filters
   const handleRadio = (e, origin) => {
     const key = e.target.value;
-    console.log(key);
+    // console.log(key);
     if (key === 'All') {
       setFilter({
         ...filter,
@@ -93,7 +93,7 @@ const FilterBar = () => {
       });
       return;
     }
-    console.log(origin);
+    // console.log(origin);
     setFilter({
       ...filter,
       category: {

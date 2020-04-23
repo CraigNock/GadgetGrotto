@@ -21,22 +21,25 @@ const sortByStock = (a, b) => {
 // ************************************************************** //
 // function that will initially fetch all the items to the server //
 // ************************************************************** //
+// checks that global items storage has been populated, if not, populates from db
 const retrieveAllItems = async () => {
+  if (ITEMS.length > 0) return;
 	const client = new MongoClient('mongodb://localhost:27017', {
 	useUnifiedTopology: true,
 	});
 	try{
     await client.connect();
-    console.log('connecto');
+    console.log('retrive connecto');
     const db = client.db('ecommerce');
-    db.collection('items')
+    const itemArr = await db.collection('items')
       .find()
-      .toArray((err, result) => {
-      ITEMS = JSON.parse(JSON.stringify(result));
+      .toArray() 
+      ITEMS = JSON.parse(JSON.stringify(itemArr));
       console.log('ITEMS RETRIEVED', ITEMS[0]._id);
       client.close();
-      console.log('disconnecto');
-    })
+      console.log('retrive disconnecto');
+      return;
+  
   } catch (err) {
     console.log('error', err);
   };
@@ -151,11 +154,11 @@ const getItemInformation = async (req, res) => {
 // returns the categories in an array  //
 // *********************************** //
 
-let catagories = [];
+let categories = [];
 const getCategories = async (req, res) => { 
   if (ITEMS.length < 1) await retrieveAllItems();
   
-  if (catagories === []) {
+  if (categories.length < 1) {
     let types = [];
     const makeTypes = () => {
       ITEMS.forEach((item) => {
@@ -167,10 +170,11 @@ const getCategories = async (req, res) => {
       return self.indexOf(value) === index;
     };
     types = types.filter(unique);
-    catagories = [...types];
-    res.send(catagories);
+    // console.log('types', types);
+    categories = [...types];
+    res.send(categories);
   } else {
-    res.send(catagories);
+    res.send(categories);
   }
 };
 
@@ -178,7 +182,9 @@ const getCategories = async (req, res) => {
 // returns an array of the 3 items on special sorted by highest stock and 3 random items as featured items //
 // ******************************************************************************************************* //
 const getHomepage = async (req, res) => {  
-  if (ITEMS.length < 1) await retrieveAllItems();
+// checks that global items storage has been populated, if not, populates
+  await retrieveAllItems();
+
   // constant of how many items we want displayed
   const NUM_OF_ITEMS = 3;
 

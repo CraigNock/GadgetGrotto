@@ -19,22 +19,22 @@ function Homepage() {
   return (
     <Wrapper>
       <SearchBar />
-      <Title COLORS={COLORS}>Home</Title>
-      <SubTitle COLORS={COLORS}>Sale!</SubTitle>
+      <Title colors={COLORS}>Home</Title>
+      <SubTitle colors={COLORS}>Sale!</SubTitle>
       <SaleItems>
         {loadStatus === 'complete' ? (
           catalogItems.saleItems.map((item) => {
-            return <ItemCard product={item} />;
+            return <ItemCard key={item._id +1} product={item} />;
           })
         ) : (
           <></>
         )}
       </SaleItems>
-      <SubTitle COLORS={COLORS}>Featured!</SubTitle>
+      <SubTitle colors={COLORS}>Featured!</SubTitle>
       <ItemDisplay>
         {loadStatus === 'complete' ? (
           catalogItems.featuredItems.map((item) => {
-            return <ItemCard product={item} />;
+            return <ItemCard key={item._id +2} product={item} />;
           })
         ) : (
           <></>
@@ -52,7 +52,7 @@ const Wrapper = styled.div`
 const Title = styled.h2`
   padding: 0.5rem 1rem 0;
   text-align: center;
-  color: ${(props) => props.COLORS.header};
+  color: ${(props) => props.colors.header};
   text-shadow: 4px 8px 25px #616161, 0px 4px 4px rgba(0, 0, 0, 0.3),
     1px 2px 2px rgba(0, 0, 0, 0.5);
 `;

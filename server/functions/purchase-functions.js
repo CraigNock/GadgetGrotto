@@ -53,7 +53,7 @@
     });
     try{
       await client.connect();
-      console.log('connected');
+      console.log('purch connected');
       const db = client.db('ecommerce');
 
       await cartItems.forEach( async (item) => {
@@ -70,7 +70,7 @@
       
       res.send({confirmation: random, status: 200 });
       client.close();
-      console.log('disconnecto');
+      console.log('purch disconnecto');
 
       retrieveAllItems();///might not work-> test
     } catch (err) {
@@ -104,20 +104,20 @@
 
     try{
       await client.connect();
-      console.log('connected');
+      console.log('get order connected');
       const db = client.db('ecommerce');
       
-      db.collection('orders')
+      const retrieved = await db.collection('orders')
         .findOne({
-            $or:[ { _id: confirmation }, 
+            $or:[ { _id: Number(confirmation) }, 
             {order: {user: {email: confirmation} } } ]//check works
-          }, 
-          (err, result) => {
-            result
-              ? res.send({ result })
-              : res.status(404).json({ status: 404, data: 'Not Found' });
-            client.close();
-        });
+          });
+      console.log('retrieved', retrieved);
+      retrieved
+        ? res.send({ ...retrieved })
+        : res.status(404).json({ status: 404, order: 'Not Found' });
+      client.close();
+      console.log('get order disconnected');
       
     } catch (err) {
       console.log('error', err);

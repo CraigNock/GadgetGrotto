@@ -54,7 +54,7 @@ const ItemDisplay = () => {
                     setCurrentPage(currentPage - 1);
                   }
                 }}
-                COLORS={COLORS}
+                colors={COLORS}
               >
                 &#8656; Previous page
               </PageChange>
@@ -64,7 +64,7 @@ const ItemDisplay = () => {
                     setCurrentPage(currentPage + 1);
                   }
                 }}
-                COLORS={COLORS}
+                colors={COLORS}
               >
                 Next Page &#8658;
               </PageChange>
@@ -72,7 +72,7 @@ const ItemDisplay = () => {
           </InfoBox>
           <Wrapper>
             {pages[currentPage].map((item) => {
-              return <ItemCard key={item.id} product={item} />;
+              return <ItemCard key={item._id} product={item} />;
             })}
           </Wrapper>
           <PageSelectBox style={{ justifyContent: 'space-between' }}>
@@ -82,7 +82,7 @@ const ItemDisplay = () => {
                   setCurrentPage(currentPage - 1);
                 }
               }}
-              COLORS={COLORS}
+              colors={COLORS}
             >
               &#8656; Previous page
             </PageChange>
@@ -92,7 +92,7 @@ const ItemDisplay = () => {
                   setCurrentPage(currentPage + 1);
                 }
               }}
-              COLORS={COLORS}
+              colors={COLORS}
             >
               Next Page &#8658;
             </PageChange>
@@ -119,7 +119,7 @@ const PageSelectBox = styled.div`
   font-size: 0.7rem;
 `;
 const PageChange = styled.div`
-  color: ${(props) => props.COLORS.header};
+  color: ${(props) => props.colors.header};
   padding: 4px 10px;
   margin: 5px;
   cursor: pointer;

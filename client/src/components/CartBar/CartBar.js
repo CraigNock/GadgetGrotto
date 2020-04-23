@@ -25,13 +25,13 @@ const CartBar = () => {
   return (
     <StyledDiv style={{ left: cartItems.length > 0 ? '0%' : '100%' }}>
       <div>
-        <Header COLORS={COLORS}>
+        <Header colors={COLORS}>
           <h1>Cart</h1>
           <ItemCount>
             <p>
               <span>{cartItems.length}</span>Items
             </p>
-            <ClearButton onClick={() => dispatch(clearCart())} COLORS={COLORS}>
+            <ClearButton onClick={() => dispatch(clearCart())} colors={COLORS}>
               Clear Cart
             </ClearButton>
           </ItemCount>
@@ -39,8 +39,8 @@ const CartBar = () => {
         <CartItems>
           {cartItems.map((item) => (
             <CartItem
-              key={item.id}
-              id={item.id}
+              key={item._id}
+              id={item._id}
               name={item.name}
               price={item.price}
               quantity={item.quantity} //created and modified in redux.
@@ -59,7 +59,7 @@ const CartBar = () => {
           onClick={() => {
             dispatch(startPurchase()); //this change in status triggers checkout modal popup
           }}
-          COLORS={COLORS}
+          colors={COLORS}
         >
           Checkout
         </CheckoutButton>
@@ -78,7 +78,7 @@ const StyledDiv = styled.div`
 `;
 const Header = styled.div`
   h1 {
-    color: ${(props) => props.COLORS.footer};
+    color: ${(props) => props.colors.footer};
     /* text-shadow: 4px 8px 25px #616161, 0px 4px 4px rgba(0, 0, 0, 0.5),
     1px 2px 2px rgba(0, 0, 0, 0.75); */
   }
@@ -101,7 +101,7 @@ const ClearButton = styled.button`
   border-radius: 10px;
   margin: 0 1rem;
   font-size: 0.75rem;
-  background: ${(props) => props.COLORS.clearCart};
+  background: ${(props) => props.colors.clearCart};
   color: lightgray;
   border: none;
   &:hover {
@@ -133,8 +133,8 @@ const CheckoutButton = styled.button`
   border-radius: 10px;
   font-weight: bold;
   padding: 0.25rem 0.5rem;
-  color: ${(props) => props.COLORS.background};
-  background: ${(props) => props.COLORS.filter};
+  color: ${(props) => props.colors.background};
+  background: ${(props) => props.colors.filter};
   border: none;
   &:hover {
     cursor: pointer;

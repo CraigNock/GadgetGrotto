@@ -20,7 +20,7 @@ const OrderInfo = () => {
       fetch(`/history/${confirmId}`)
         .then((data) => data.json())
         .then((data) => {
-          console.log('data.confirmation (confirmId)', data.confirmation);
+          console.log('data._id (confirmId)', data._id);
           console.log('data.order ', data.order);
           setOrderInfo(data.order);
           dispatch(clearPurchase());
@@ -36,15 +36,15 @@ const OrderInfo = () => {
     return <OrderSearch />;
   } else {
     return orderInfo ? (
-      <StyledDiv COLORS={COLORS}>
+      <StyledDiv colors={COLORS}>
         <h2>Order # {confirmId}</h2>
         {orderInfo.cartItems.map((item) => {
           return (
-            <ItemCard key={item.id} COLORS={COLORS}>
+            <ItemCard key={item._id} colors={COLORS}>
               <img src={item.imageSrc} alt="item" />
               <InfoDiv>
                 <Title>
-                  <StyledLink to={`/product/${item.id}`}>
+                  <StyledLink to={`/product/${item._id}`}>
                     {item.name}
                   </StyledLink>
                 </Title>
@@ -79,8 +79,8 @@ const OrderInfo = () => {
 const StyledDiv = styled.div`
   width: 90%;
   height: 90%;
-  background: ${(props) => props.COLORS.background};
-  box-shadow: 2px 5px 10px 0px ${(props) => props.COLORS.header};
+  background: ${(props) => props.colors.background};
+  box-shadow: 2px 5px 10px 0px ${(props) => props.colors.header};
   border-radius: 5px;
   margin: 2.5% auto;
   padding: 1rem;

@@ -26,17 +26,17 @@ const getCompanyProducts = async (req, res) => {
 
 	try{
     await client.connect();
-    console.log('connecto');
+    console.log('getcomp connecto');
 
     const db = client.db('ecommerce');
-    db.collection('items')
-      .find({companyId: companyId})
-      .toArray((err, result) => {
-			res.send(result);
+    const products = await db.collection('items')
+      .find({companyId: Number(companyId)})
+      .toArray()
+		res.send(products);
 
-      client.close();
-      console.log('disconnecto');
-    })
+    client.close();
+    console.log('get comp disconnecto');
+    
   } catch (err) {
     console.log('error', err);
   };
@@ -58,6 +58,7 @@ const getCompanyProducts = async (req, res) => {
 
 const getCompanyName = async (req, res) => {
 	const { companyId } = req.params;
+	console.log('companyId', companyId);
 	const client = new MongoClient('mongodb://localhost:27017', {
 	useUnifiedTopology: true,
 	});
@@ -67,13 +68,13 @@ const getCompanyName = async (req, res) => {
 		console.log('connecto');
 
 		const db = client.db('ecommerce');
-		db.collection('companies')
-			.findOne({ _id: companyId }, (err, result) => {
-				console.log('result', result);
-				result 
-				? res.send({companyName: result.name})
-				: res.status(404).json({ status: 404, companyName: 'Not Found' });
-			});
+		const retrievedCompany = await db.collection('companies')
+			.findOne({ _id: Number(companyId) });
+		console.log('retrievedCompany', retrievedCompany);
+		retrievedCompany 
+			? res.send({companyName: retrievedCompany.name})
+			: res.status(404).json({ status: 404, companyName: 'Not Found' });
+			
 
 		client.close();
 		console.log('disconnecto');

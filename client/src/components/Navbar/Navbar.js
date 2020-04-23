@@ -22,6 +22,7 @@ function Navbar() {
       .then((res) => res.json())
       .then((data) => {
         setCategories(data);
+        console.log('cata data', data);
       });
   }, []);
 
@@ -34,7 +35,7 @@ function Navbar() {
     <>
       <LoginAndOut>
         {!isAuthenticated && (
-          <Authenticators onClick={() => loginWithPopup({})} COLORS={COLORS}>
+          <Authenticators onClick={() => loginWithPopup({})} colors={COLORS}>
             Log in
           </Authenticators>
         )}
@@ -44,7 +45,7 @@ function Navbar() {
 
       <NavWrapper>
         <Link to="/">
-          <LogoBG COLORS={COLORS}>
+          <LogoBG colors={COLORS}>
             <Logo
               src={
                 COLORS.logo === 'base'
@@ -60,25 +61,25 @@ function Navbar() {
           </LogoBG>
         </Link>
         <Link to="/">
-          <NavContent COLORS={COLORS}>Home</NavContent>
+          <NavContent colors={COLORS}>Home</NavContent>
         </Link>
 
         {/* the dropdown menu. The items are generated separately in another component through array.map() */}
         {/* had to be done as Dropdown.Toggle (old method) instead of DropdownButton (new method) to allow for styling */}
         <Dropdown>
-          <Dropdown.Toggle as={NavContent} COLORS={COLORS}>
+          <Dropdown.Toggle as={NavContent} colors={COLORS}>
             Products
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
             {categories.map((category) => {
-              return <NavCategory category={category} />;
+              return <NavCategory key={`${category}`} category={category} />;
             })}
           </Dropdown.Menu>
         </Dropdown>
 
         <Link to="/order-confirm/search">
-          <NavContent COLORS={COLORS}>Order History</NavContent>
+          <NavContent colors={COLORS}>Order History</NavContent>
         </Link>
       </NavWrapper>
     </>
@@ -94,8 +95,8 @@ const LogoBG = styled.div`
   transition: background-color 500ms;
   border-radius: 3px;
   &:hover {
-    border-bottom: ${(props) => props.COLORS.filter} solid 2px;
-    background-color: ${(props) => props.COLORS.main};
+    border-bottom: ${(props) => props.colors.filter} solid 2px;
+    background-color: ${(props) => props.colors.main};
   }
   @media (max-width: 504px) {
     height: 108px;
@@ -106,15 +107,15 @@ const NavContent = styled.div`
   padding: 10px;
   margin: 51px 0px 0px;
   font-size: 1.5em;
-  color: ${(props) => props.COLORS.main};
+  color: ${(props) => props.colors.main};
   transition: background-color 500ms;
   border-radius: 3px;
   border-bottom: transparent solid 2px;
   &:hover {
     cursor: pointer;
-    color: ${(props) => props.COLORS.header};
-    border-bottom: ${(props) => props.COLORS.filter} solid 2px;
-    background-color: ${(props) => props.COLORS.main};
+    color: ${(props) => props.colors.header};
+    border-bottom: ${(props) => props.colors.filter} solid 2px;
+    background-color: ${(props) => props.colors.main};
   }
   @media (max-width: 504px) {
     margin: 0px;
@@ -122,7 +123,7 @@ const NavContent = styled.div`
 `;
 
 const Authenticators = styled.div`
-  color: ${(props) => props.COLORS.main};
+  color: ${(props) => props.colors.main};
   font-size: 1.5em;
 
   transition: background-color 500ms;
@@ -130,9 +131,9 @@ const Authenticators = styled.div`
   padding: 10px;
 
   &:hover {
-    color: ${(props) => props.COLORS.header};
-    border-bottom: ${(props) => props.COLORS.filter} solid 2px;
-    background-color: ${(props) => props.COLORS.main};
+    color: ${(props) => props.colors.header};
+    border-bottom: ${(props) => props.colors.filter} solid 2px;
+    background-color: ${(props) => props.colors.main};
     cursor: pointer;
   }
 
