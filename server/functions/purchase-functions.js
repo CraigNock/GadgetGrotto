@@ -5,10 +5,10 @@
   const {
     ITEMS,
     retrieveAllItems,
-  } = require('./functions/item-functions');
+  } = require('./item-functions');
 
   // an array that will store all the orders that have been completed
-  let completedOrders = [];
+  // let completedOrders = [];
 
   // ************************************************************************** //
   // function that stores a confirmation order and the order details in memory  //
@@ -56,7 +56,7 @@
       console.log('connected');
       const db = client.db('ecommerce');
 
-      await cartItems.forEach( item => {
+      await cartItems.forEach( async (item) => {
         const newStock = item.numInStock - 1;
         const r = await db.collection('items')
           .updateOne({name: item.name}, { $set: {numInStock: newStock } });
@@ -124,6 +124,6 @@
     };
   };
 
-  
+
 
   module.exports = {confirmPurchase, orderHistory};

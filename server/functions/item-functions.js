@@ -3,7 +3,7 @@ const { MongoClient } = require('mongodb');
 const assert = require('assert');
 
 //item storage in server, update periodically
-const ITEMS = [];
+let ITEMS = [];
 
 // customized sort function 
 const sortByStock = (a, b) => {
@@ -33,7 +33,7 @@ const retrieveAllItems = async () => {
       .find()
       .toArray((err, result) => {
       ITEMS = JSON.parse(JSON.stringify(result));
-      console.log('ITEMS RETRIEVED', ITEMS[0]);
+      console.log('ITEMS RETRIEVED', ITEMS[0]._id);
       client.close();
       console.log('disconnecto');
     })
@@ -129,7 +129,7 @@ const getSearchResults = async (req, res) => {
 // ********************************************** //
 // returns the information of the specified item  //
 // ********************************************** //
-const getItemInformation = (req, res) => {  
+const getItemInformation = async (req, res) => {  
   if (ITEMS.length < 1) await retrieveAllItems();
 
   const {itemId} = req.params;
@@ -138,7 +138,7 @@ const getItemInformation = (req, res) => {
   let position;
 
   ITEMS.forEach((item, index) => {
-    if (item.id == itemId){
+    if (item._id == itemId){
       position = index;
     }
   })
@@ -200,6 +200,8 @@ const getHomepage = async (req, res) => {
 };
 
 module.exports = {
+  ITEMS,
+  retrieveAllItems,
   getHomepage,
   filterCategory,
   getCategories,

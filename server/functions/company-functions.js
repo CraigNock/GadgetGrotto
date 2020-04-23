@@ -69,6 +69,7 @@ const getCompanyName = async (req, res) => {
 		const db = client.db('ecommerce');
 		db.collection('companies')
 			.findOne({ _id: companyId }, (err, result) => {
+				console.log('result', result);
 				result 
 				? res.send({companyName: result.name})
 				: res.status(404).json({ status: 404, companyName: 'Not Found' });

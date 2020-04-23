@@ -34,15 +34,15 @@ const App = () => {
       <PageStructure>
         <GlobalStyles />
         <CheckoutModal />
-        <HeaderWrap COLORS={COLORS}>
+        <HeaderWrap colors={COLORS}>
           <Navbar />
         </HeaderWrap>
 
-        <FilterBarWrap COLORS={COLORS}>
+        <FilterBarWrap colors={COLORS}>
           <FilterBar />
         </FilterBarWrap>
 
-        <MainWrap COLORS={COLORS}>
+        <MainWrap colors={COLORS}>
           <Switch>
             <Route exact path="/">
               <Homepage />
@@ -82,11 +82,11 @@ const App = () => {
           </Switch>
         </MainWrap>
 
-        <CheckoutBarWrap COLORS={COLORS}>
+        <CheckoutBarWrap colors={COLORS}>
           <CartBar />
         </CheckoutBarWrap>
 
-        <FooterWrap COLORS={COLORS}>
+        <FooterWrap colors={COLORS}>
           <Footer />
         </FooterWrap>
       </PageStructure>
@@ -126,27 +126,27 @@ const PageStructure = styled.div`
 `;
 const HeaderWrap = styled.div`
   grid-area: head;
-  background: ${(props) => props.COLORS.header};
+  background: ${(props) => props.colors.header};
 `;
 const FilterBarWrap = styled.div`
   grid-area: filters;
-  background: ${(props) => props.COLORS.filter};
+  background: ${(props) => props.colors.filter};
 `;
 const MainWrap = styled.div`
   grid-area: main;
   overflow-y: auto;
   /* overflow-x: hidden; */
-  background: ${(props) => props.COLORS.main};
+  background: ${(props) => props.colors.main};
 `;
 const CheckoutBarWrap = styled.div`
   grid-area: cart;
-  background: ${(props) => props.COLORS.background};
-  border-left: 2px solid ${(props) => props.COLORS.filter};
+  background: ${(props) => props.colors.background};
+  border-left: 2px solid ${(props) => props.colors.filter};
   overflow-x: hidden;
 `;
 const FooterWrap = styled.div`
   grid-area: foot;
-  background: ${(props) => props.COLORS.footer};
+  background: ${(props) => props.colors.footer};
 `;
 
 export default App;

@@ -17,6 +17,7 @@ function FetchInitItems() {
         return res.json();
       })
       .then(items => {
+        // console.log('items', items);
         dispatch(getInitItems(items));
         // ... then stop this process by setting the load status to 'complete' (this runs an infinite loop otherwise!)
         dispatch(updateLoadStatus('complete'));

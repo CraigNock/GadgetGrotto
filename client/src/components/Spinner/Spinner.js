@@ -6,7 +6,7 @@ import styled, { keyframes } from 'styled-components';
 
 const Spinner = ({ size }) => {
   const COLORS = useSelector((state) => state.designSetting);
-  return <Spinning size={size} icon={loader} COLORS={COLORS} />;
+  return <Spinning size={size} icon={loader} colors={COLORS} />;
 };
 const spin = keyframes`
   from {
@@ -18,7 +18,7 @@ const spin = keyframes`
 `;
 
 const Spinning = styled(Icon)`
-  color: ${(props) => props.COLORS.filter};
+  color: ${(props) => props.colors.filter};
   @media (prefers-reduced-motion: no-preference) {
     animation: ${spin} 1000ms infinite;
   }

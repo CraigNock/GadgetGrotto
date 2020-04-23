@@ -168,7 +168,7 @@ const FilterBar = () => {
           {Object.keys(filter.category).map((location) => {
             const origin = 'category';
             return (
-              <li>
+              <li key={`${location} li`}>
                 <input
                   type={'radio'}
                   name={`${location}`}
@@ -177,7 +177,7 @@ const FilterBar = () => {
                   onChange={(e) => handleRadio(e, origin)}
                   checked={filter.category[location]}
                 ></input>
-                <label for={`${location}`}>{location}</label>
+                <label htmlFor={`${location}`}>{location}</label>
               </li>
             );
           })}
@@ -205,7 +205,7 @@ const FilterBar = () => {
                   onChange={handleBodyCheckbox}
                   checked={filter['bodyLocation'][location]}
                 ></input>
-                <label for={`${location}`}>{location}</label>
+                <label htmlFor={`${location}`}>{location}</label>
               </li>
             );
           })}
@@ -230,7 +230,7 @@ const FilterBar = () => {
                   onChange={handlePriceCheckbox}
                   checked={filter['price'][range]}
                 ></input>
-                <label for={`${range}`}>{range}</label>
+                <label htmlFor={`${range}`}>{range}</label>
               </li>
             );
           })}
