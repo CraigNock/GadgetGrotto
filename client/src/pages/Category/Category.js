@@ -25,6 +25,7 @@ const Category = () => {
   useEffect(() => {
     dispatch(searchResults(products));
     dispatch(setDisplayItems(products));
+// eslint-disable-next-line
   }, [products]);
 
   // conditional rendering based on fetch coming through.

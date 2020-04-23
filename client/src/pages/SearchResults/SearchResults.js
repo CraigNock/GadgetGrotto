@@ -23,6 +23,7 @@ const SearchResults = () => {
   useEffect(() => {
     dispatch(searchResults(returnValues));
     dispatch(setDisplayItems(returnValues));
+// eslint-disable-next-line
   }, [returnValues]);
 
   return (

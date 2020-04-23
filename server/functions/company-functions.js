@@ -9,17 +9,14 @@ const assert = require('assert');
 // ********************************************************* //
 // const getCompanyProducts = (req, res) => {
 //     const { companyId } = req.params;
-
 //     // filters through the items to find those released by that specific company
 //     let filteredProducts = items.filter((item) => {
 //         if (item.companyId == companyId) {
 //             return item;
 //         }
 //     });
-
 //     res.send(filteredProducts);
 // };
-
 
 const getCompanyProducts = async (req, res) => {
 	const { companyId } = req.params;
@@ -35,13 +32,6 @@ const getCompanyProducts = async (req, res) => {
     db.collection('items')
       .find({companyId: companyId})
       .toArray((err, result) => {
-      // console.log('result', result);
-      // let filteredProducts = result.filter((item) => {
-			// 	if (item.companyId == companyId) {
-			// 	return item;
-			// 	}
-			// });
-			// res.send(filteredProducts);
 			res.send(result);
 
       client.close();
@@ -50,8 +40,6 @@ const getCompanyProducts = async (req, res) => {
   } catch (err) {
     console.log('error', err);
   };
-	
-
 };
 
 // ********************************************************* //

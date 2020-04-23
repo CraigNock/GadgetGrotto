@@ -28,6 +28,7 @@ const OrderInfo = () => {
         .catch((err) => {
           console.error('Caught error orderinfo: ', err);
         });
+// eslint-disable-next-line
   }, [confirmId]);
 
   //if this page is rendered from the order history link; just return search input

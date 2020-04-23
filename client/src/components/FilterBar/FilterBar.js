@@ -46,6 +46,7 @@ const FilterBar = () => {
   useEffect(() => {
     dispatch(filterItems(filter));
     dispatch( sortItems(JSON.stringify(sortOption)) );
+  // eslint-disable-next-line
   }, [filter]);
 
   useEffect(() => {

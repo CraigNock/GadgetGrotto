@@ -34,6 +34,7 @@ function ProductDetails() {
         // Fetch company name from server AFTER initial fetch finishes:
         getCompanyName(item.companyId);
       });
+// eslint-disable-next-line
   }, []);
   // get item details from state:
   let dataInState = useSelector(getProductDetails);
@@ -45,7 +46,7 @@ function ProductDetails() {
   const determineDiscount = () => {
     if (inits !== undefined) {
       const thereIsDiscount = inits.saleItems.filter(
-        (item) => item.id == productId
+        (item) => item.id === productId
       );
       // filtering yields a list, so if this list contains anything then the item is discounted:
       if (thereIsDiscount.length > 0) {
@@ -281,122 +282,122 @@ function ProductDetails() {
   );
 }
 
-const MainBox = styled.div`
-  display: grid;
-  grid-template-areas:
-    'name name name'
-    'img img deets'
-    'img img deets'
-    'purch purch buy';
-  padding: 16px;
-  width: 100%;
-  height: 100%;
-  @media (max-width: 940px) {
-    grid-template-areas:
-      'name name'
-      'img img'
-      'deets deets'
-      'purch buy';
-  }
-  @media (max-width: 480px) {
-    grid-template-areas:
-      'name'
-      'img'
-      'deets'
-      'purch'
-      'buy';
-    padding: 4px;
-    width: 90%;
-  }
-`;
-const DetailBox = styled.div`
-  margin: 24px;
-  text-align: left;
-  grid-area: deets;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border: 1px solid ${(props) => props.COLORS.header};
-  border-radius: 8px;
-  padding: 16px;
-  width: auto;
-  background: ${(props) => props.COLORS.background};
-  a {
-    color: blue;
-  }
-  @media (max-width: 480px) {
-    margin: 4px;
-    padding: 4px;
-  }
-`;
-const BigDiv = styled.div`
-  margin: 24px;
-  padding: 10px;
-  border: 1px solid ${(props) => props.COLORS.borderNoire};
-  border-radius: 8px;
-  grid-area: img;
-  display: flex;
-  flex-direction: column;
-  background: ${(props) => props.COLORS.background};
-  text-align: center;
-  @media (max-width: 480px) {
-    margin: 4px;
-    padding: 4px;
-  }
-`;
-const Special = styled.div`
-  color: whitesmoke;
-  padding: 4px;
-  z-index: 2;
-  background-image: url(${starburst});
-  background-repeat: no-repeat;
-  background-size: 100%;
-  min-height: 72px;
-  min-width: 96px;
-`;
-const StruckThru = styled.span`
-  text-decoration: line-through;
-  color: ${(props) => props.COLORS.filter};
-  margin-right: 8px;
-  position: relative;
-  margin-right: 8px;
-  color: black;
-`;
-const PurchaseInfo = styled.div`
-  grid-area: purch;
-  display: flex;
-  justify-content: space-evenly;
-  color: ${(props) => props.COLORS.header};
-`;
+// const MainBox = styled.div`
+//   display: grid;
+//   grid-template-areas:
+//     'name name name'
+//     'img img deets'
+//     'img img deets'
+//     'purch purch buy';
+//   padding: 16px;
+//   width: 100%;
+//   height: 100%;
+//   @media (max-width: 940px) {
+//     grid-template-areas:
+//       'name name'
+//       'img img'
+//       'deets deets'
+//       'purch buy';
+//   }
+//   @media (max-width: 480px) {
+//     grid-template-areas:
+//       'name'
+//       'img'
+//       'deets'
+//       'purch'
+//       'buy';
+//     padding: 4px;
+//     width: 90%;
+//   }
+// `;
+// const DetailBox = styled.div`
+//   margin: 24px;
+//   text-align: left;
+//   grid-area: deets;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-between;
+//   border: 1px solid ${(props) => props.COLORS.header};
+//   border-radius: 8px;
+//   padding: 16px;
+//   width: auto;
+//   background: ${(props) => props.COLORS.background};
+//   a {
+//     color: blue;
+//   }
+//   @media (max-width: 480px) {
+//     margin: 4px;
+//     padding: 4px;
+//   }
+// `;
+// const BigDiv = styled.div`
+//   margin: 24px;
+//   padding: 10px;
+//   border: 1px solid ${(props) => props.COLORS.borderNoire};
+//   border-radius: 8px;
+//   grid-area: img;
+//   display: flex;
+//   flex-direction: column;
+//   background: ${(props) => props.COLORS.background};
+//   text-align: center;
+//   @media (max-width: 480px) {
+//     margin: 4px;
+//     padding: 4px;
+//   }
+// `;
+// const Special = styled.div`
+//   color: whitesmoke;
+//   padding: 4px;
+//   z-index: 2;
+//   background-image: url(${starburst});
+//   background-repeat: no-repeat;
+//   background-size: 100%;
+//   min-height: 72px;
+//   min-width: 96px;
+// `;
+// const StruckThru = styled.span`
+//   text-decoration: line-through;
+//   color: ${(props) => props.COLORS.filter};
+//   margin-right: 8px;
+//   position: relative;
+//   margin-right: 8px;
+//   color: black;
+// `;
+// const PurchaseInfo = styled.div`
+//   grid-area: purch;
+//   display: flex;
+//   justify-content: space-evenly;
+//   color: ${(props) => props.COLORS.header};
+// `;
 
-const RainCheck = styled.button`
-  color: ${(props) => props.COLORS.background};
-  font-size: 22px;
-  background-color: ${(props) => props.COLORS.outOfStockBlue};
-  height: 72px;
-  width: 174px;
-  margin: 24px;
-  border-radius: 8px;
-  border: 1px solid ${(props) => props.COLORS.borderNoire};
-  grid-area: buy;
-  @media (max-width: 480px) {
-    margin: 4px;
-  }
-`;
+// const RainCheck = styled.button`
+//   color: ${(props) => props.COLORS.background};
+//   font-size: 22px;
+//   background-color: ${(props) => props.COLORS.outOfStockBlue};
+//   height: 72px;
+//   width: 174px;
+//   margin: 24px;
+//   border-radius: 8px;
+//   border: 1px solid ${(props) => props.COLORS.borderNoire};
+//   grid-area: buy;
+//   @media (max-width: 480px) {
+//     margin: 4px;
+//   }
+// `;
 
-const DetailPic = styled.img`
-  height: auto;
-  width: auto;
-  object-fit: contain;
-  padding: 8px;
-  margin: 16px;
-  background: white;
-  border: 1px solid black;
-  border-radius: 8px;
-  box-shadow: 0px 0px 8px 2px gray;
-  @media (max-width: 480px) {
-    margin: 4px;
-  }
-`;
+// const DetailPic = styled.img`
+//   height: auto;
+//   width: auto;
+//   object-fit: contain;
+//   padding: 8px;
+//   margin: 16px;
+//   background: white;
+//   border: 1px solid black;
+//   border-radius: 8px;
+//   box-shadow: 0px 0px 8px 2px gray;
+//   @media (max-width: 480px) {
+//     margin: 4px;
+//   }
+// `;
 
 export default ProductDetails;

@@ -2,27 +2,25 @@ const router = require('express').Router();
 
 const {
   getHomepage,
-  sortCategory,
+  filterCategory,
   getCategories,
   getItemInformation,
   getSearchResults,
 } = require('../functions/item-functions');
 
 // the endpoint for the home page of the app
-router.get('/homepage', (req, res) => res.send(getHomepage()));
+router.get('/homepage', getHomepage);
 
 // the endpoint for sorting by category
-router.get('/products/:category', (req, res) => res.send(sortCategory(req)));
+router.get('/products/:category', filterCategory);
 
 // the endpoint who's only purpose is to return an array of all the available categories
-router.get('/list/categories', (req, res) => res.send(getCategories()));
+router.get('/list/categories',  getCategories);
 
 // the endpoint for returning a specific item's information
-router.get('/item/:itemId', (req, res) => res.send(getItemInformation(req)));
+router.get('/item/:itemId', getItemInformation);
 
 // the endpoint for sorting by user's search query
-router.get('/products/search/:userInput', (req, res) =>
-  res.send(getSearchResults(req))
-);
+router.get('/products/search/:userInput', getSearchResults);
 
 module.exports = router;

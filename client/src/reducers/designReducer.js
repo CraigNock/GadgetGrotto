@@ -53,6 +53,9 @@ export default function designReducer(state = initialState, action) {
             clearCart: '#FF0000',
           };
         }
+        default: {
+          return;
+        }
       }
     }
 

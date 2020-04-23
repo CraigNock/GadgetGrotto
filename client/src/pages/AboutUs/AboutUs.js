@@ -15,16 +15,16 @@ const AboutUs = () => {
           This E-Commerce site is brought to you by the collaborative efforts of
           the founding members:
         </p>
-        <a href={'https://github.com/dan-atack'} target="_blank">
+        <a href={'https://github.com/dan-atack'} target="_blank" rel="noopener noreferrer">
           <p>Daniel Atack</p>
         </a>
-        <a href={'https://github.com/RonyKordahi'} target="_blank">
+        <a href={'https://github.com/RonyKordahi'} target="_blank" rel="noopener noreferrer">
           <p>Rony Kordhani</p>
         </a>
-        <a href={'https://github.com/CraigNock'} target="_blank">
+        <a href={'https://github.com/CraigNock'} target="_blank" rel="noopener noreferrer">
           <p>Craig Nockels</p>
         </a>
-        <a href={'https://github.com/PaulSusset'} target="_blank">
+        <a href={'https://github.com/PaulSusset'} target="_blank" rel="noopener noreferrer">
           <p>Paul Susset</p>
         </a>
       </StyledDiv>

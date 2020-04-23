@@ -30,6 +30,7 @@ function CompanyPage() {
   useEffect(() => {
     dispatch(searchResults(companyItems));
     dispatch(setDisplayItems(companyItems));
+// eslint-disable-next-line
   }, [companyItems]);
 
   return (
