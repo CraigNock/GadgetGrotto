@@ -24,7 +24,7 @@ After completion MongoDB integration for data storage and access, was added by m
 <img width='40%' src='./client/src/assets/screenshots/sc5.png' alt='screenshot'/>
 <img width='40%' src='./client/src/assets/screenshots/sc6.png' alt='screenshot'/>
 <img width='40%' src='./client/src/assets/screenshots/sc8.png' alt='screenshot'/>
-<img width='20%' height='150px' src='./client/src/assets/screenshots/sc7.png' alt='screenshot'/>
+<img width='100px' height='150px' src='./client/src/assets/screenshots/sc7.png' alt='screenshot'/>
 <div>
 
 ---
