@@ -1,54 +1,71 @@
-# Wearables E-Commerce Project
+![GitHub repo size](https://img.shields.io/github/repo-size/CraigNock/ecommerce_project_with_Mongodb)
 
-[See the list of TEAMS](__documentation/TEAMS.md)
 
-You will make use of _everything_ that you have learned thus far in the bootcamp to build an e-commerce app that will showcase all of the provided _wearables_ items.
+# Gadget Grotto E-Commerce Project
 
-The stack is React.Js, Redux, Node.Js, and styled-components.
+Developed alongside 3 colleagues, an e-commerce app in React. Serves, filters and sells health related gadgets. Log in for a full streamlined user experience and check out the dark mode setting for ease of night time shopping.
 
-Your node server should be RESTful and follow REST principles, at least to the extent we learned during the bootcamp.
+This group project was made  as part of the Full-Stack Web Development Diploma with <a href='https://concordiabootcamps.ca/' alt='link to Concordia Bootcamps website'>Concordia Bootcamps</a>.
 
-## Getting Started
+The original app was created using static, json file, data. 
 
-<img src="./server/assets/software-dev-path.jpg" style="width: 100%;" />
+After completion MongoDB integration for data storage and access, was added by me to this instance of the project personally.
 
-You have your assignment and your team. What should you do first? This will vary for every team, and even every team member.
+---
+## Demo
+- https://youtu.be/tPEHeLgkMg0
 
-**The important thing is to NOT just jump in and start coding!**
+## Screen Shots
+<div display='flex' flexDirection='row'>
+<img width='40%' src='./client/src/assets/screenshots/sc1.png' alt='screenshot'/>
+<img width='40%' src='./client/src/assets/screenshots/sc2.png' alt='screenshot'/>
+<img width='40%' src='./client/src/assets/screenshots/sc3.png' alt='screenshot'/>
+<img width='40%' src='./client/src/assets/screenshots/sc4.png' alt='screenshot'/>
+<img width='40%' src='./client/src/assets/screenshots/sc5.png' alt='screenshot'/>
+<img width='40%' src='./client/src/assets/screenshots/sc6.png' alt='screenshot'/>
+<img width='40%' src='./client/src/assets/screenshots/sc8.png' alt='screenshot'/>
+<img width='20%' height='150px' src='./client/src/assets/screenshots/sc7.png' alt='screenshot'/>
+<div>
 
-There probably shouldn't be any coding until very near the end of the first day.
+---
+## Installing
+**Note** that a Mongo Database will need to be set up using the included Batch-Import.js file.
+1. Clone the repo.
+2. With a running mongoDB just uncomment the function call in BatchImport.js and run the file using node.
+3. In both client and server directory terminals, run commands ```$yarn install``` and  ```$yarn start```.
 
-## Meet your Product Manager!
+**Alternatively:** json data and original endpoints are present, but commented out. Switch commenting with mongo endpoints to run with local data.
 
-Each team has been assigned a product manager. This person is in charge of answering questions, guiding you and basically preventing everything from falling apart!
+---
+## Technologies
+Technologies utilized in this project include:
+### Front End:
+React, Redux, JavaScript, Styled Components 
+### Back End:
+Express.js, Node, MongoDB
 
-This person should be prevent for some of your team meetings but not all. PMs are super busy people and have multiple projects, people to manage.
+### Utilizing:
+- Auth0 authentication for login.
 
-## Planning
+---
+## FEATURES
+- Full purchasing experience from item search and multiple filtering to checkout and order retrieval.
+- User login to remember your history.
+- Alternative, toggleable, colour schemes for entire app.
+- Sale items based on stock numbers.
+- Dynamic item descriptions based off of price, location item is to be worn upon, and number in stock.
+- Responsiveness for alternate viewing sizes.
 
-1. You will break into 3 groups (with your assigned PM.)
-2. Your PM will answer any initial questions, and give you more information, as required.
-3. Break into a separate meeting with just your team. \_Your PM will bounce from team to team to make sure you're on track.
-4. Time to use the [Kickoff Meeting Agenda](__documentation/KICKOFF_MEETING_AGENDA.md)
+---
+## Key Learning: 
+- Collaborating as a team on the design, structure and delegation of the project.
+- Coordinating with team members to ensure that each facet of the project was understood by all members.
+- Applying non-disruptive changes and additions to infrastructure built by others.
 
-### First team meeting
 
-It could also be a good/fun idea to give yourselves an original team name. :)
-
-Your first team meeting should start with the [Kickoff Meeting Agenda](__documentation/KICKOFF_MEETING_AGENDa.md).
-
-[Successful Software Project Delivery in 10 Steps](https://www.appnovation.com/blog/successful-software-project-delivery-10-steps).
-
-💡 How a project starts is indicative of how it will end.
-
-## Teamwork
-
-The most important aspect of this project is the ability to work in a team. No matter your contribution to the project, yuo should understand the _full_ codebase. This will require that you
-
-- **review** each other's code
-- **ask** questions when you don't understand
-- **comment** your code extensively. _Always go for clarity over brevity._
-
-## GitHub
-
-see the [GITHUB Document](__documentation/GITHUB.md)
+---
+## Team
+It was a pleasure to collaborate on this project with my teammates:
+* [@Daniel Atack](https://github.com/dan-atack)💻
+* [@Rony Kordahi](https://github.com/RonyKordahi)💻
+* [@Paul Susset](https://github.com/PaulSusset)💻

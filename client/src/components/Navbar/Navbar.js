@@ -22,7 +22,7 @@ function Navbar() {
       .then((res) => res.json())
       .then((data) => {
         setCategories(data);
-        console.log('cata data', data);
+        // console.log('cata data', data);
       });
   }, []);
 

@@ -61,7 +61,7 @@ const ModalForm = ({ cartItems, total }) => {
     })
     .then(res => res.json())
     .then(res => {
-      console.log('order id & success reply ', res.confirmation, res.status);
+      // console.log('order id & success reply ', res.confirmation, res.status);
       if (res.status === 200) {
         // console.log('purchase success');
         let confirmId = res.confirmation
