@@ -1,7 +1,8 @@
-// After some deliberation, I think it would be best for the items list to be an object; that way you can query it by name/id etc...
+
 const initialState = {
   items: {},
   status: 'idle',
+  cartVisible: false,
 };
 //statuses: idle, start-purchase, submitting-order, purchased
 
@@ -51,6 +52,21 @@ export default function cartItemsReducer(state = initialState, action) {
     }
     case "CLEAR_CART": {
       return {...initialState};
+    }
+    ///cart toggling
+    case 'SHOW-CART': {
+      console.log('show');
+      return {
+        ...state,
+        cartVisible: true,
+      };
+    }
+    case 'HIDE-CART': {
+      console.log('hide');
+      return {
+        ...state,
+        cartVisible: false,
+      };
     }
     ///statuses
     case 'START-PURCHASE-PROCESS': {

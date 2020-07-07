@@ -21,6 +21,13 @@ export const removeItem = (id) => ({
 export const clearCart = () => ({
   type: 'CLEAR_CART',
 });
+///cart-visibility actions
+export const showCart = () => ({
+  type: 'SHOW-CART',
+});
+export const hideCart = () => ({
+  type: 'HIDE-CART',
+});
 /// cart-status actions
 export const startPurchase = () => ({
   type: 'START-PURCHASE-PROCESS',
