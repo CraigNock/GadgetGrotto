@@ -93,6 +93,11 @@ const App = () => {
     </Router>
   );
 };
+///responsive changes
+////change cart areas to main. Have cartbar move into main on toggle
+///flex 3 , 1 : 1 , 1 : replace
+/// trim down nav on mobile or make not fixed
+///check pagination on mobile
 
 const PageStructure = styled.div`
   height: 100vh;

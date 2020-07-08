@@ -84,7 +84,11 @@ function Navbar() {
       </NavWrapper>
     </>
   );
-}
+};
+
+///responsiveness
+///add cart toggle button
+///add to-top button for mobile
 
 const LogoBG = styled.div`
   height: 100%;
