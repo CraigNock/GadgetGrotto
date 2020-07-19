@@ -30,11 +30,13 @@ After completion MongoDB integration for data storage and access, was added by m
 ---
 ## Installing
 **Note** that a Mongo Database will need to be set up using the included Batch-Import.js file.
-1. Clone the repo.
-2. With a running mongoDB just uncomment the function call in BatchImport.js and run the file using node.
+1. Fork the repo.
+2. Open your preffered code editor and clone the repository.
+3. Set up a MongoDB server on your computer (An easy guide can be found at <a href='https://www.freecodecamp.org/news/learn-mongodb-a4ce205e7739/'>freeCodeCamp</a>) *
+2. With a running mongoDB server, just uncomment the function call in BatchImport.js and run the file using node. This will add the item data to your server for retrieval.
 3. In both client and server directory terminals, run commands ```$yarn install``` and  ```$yarn start```.
 
-**Alternatively:** json data and original endpoints are present, but commented out. Switch commenting with mongo endpoints to run with local data.
+***Alternatively:** json data and original endpoints are present, but commented out. Uncomment these endpoints and comment out the mongo endpoints to run the app with local data.
 
 ---
 ## Technologies
