@@ -111,7 +111,7 @@ function ProductDetails() {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border: 1px solid ${COLORS.header};
+    /* border: 1px solid ${COLORS.header}; */
     border-radius: 8px;
     padding: 16px;
     width: auto;
@@ -127,7 +127,7 @@ function ProductDetails() {
   const BigDiv = styled.div`
     margin: 24px;
     padding: 10px;
-    border: 1px solid ${COLORS.borderNoire};
+    /* border: 1px solid ${COLORS.borderNoire}; */
     border-radius: 8px;
     grid-area: img;
     display: flex;
@@ -186,7 +186,7 @@ function ProductDetails() {
     padding: 8px;
     margin: 16px;
     background: white;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     border-radius: 8px;
     box-shadow: 0px 0px 8px 2px gray;
     @media (max-width: 480px) {

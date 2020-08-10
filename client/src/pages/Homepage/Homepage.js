@@ -53,6 +53,7 @@ const Title = styled.h2`
   padding: 0.5rem 1rem 0;
   text-align: center;
   color: ${(props) => props.colors.header};
+  color:whitesmoke;
   text-shadow: 4px 8px 25px #616161, 0px 4px 4px rgba(0, 0, 0, 0.3),
     1px 2px 2px rgba(0, 0, 0, 0.5);
 `;

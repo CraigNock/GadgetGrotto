@@ -27,8 +27,12 @@ const StyledButton = styled.button`
   width: 174px;
   margin: 24px;
   border-radius: 8px;
-  border: 1px solid ${(props) => props.COLORS.header};
+  /* border: 1px solid ${(props) => props.COLORS.header}; */
+  border: none;
   grid-area: buy;
+  &:hover{
+    cursor: pointer;
+  }
 `;
 
 export default AddToCartButton;

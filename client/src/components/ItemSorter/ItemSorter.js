@@ -38,7 +38,16 @@ const ItemSorter = () => {
 };
 
 const StyledDiv = styled.div`
-  margin: 0 0 2rem;
+  margin: 0 0 2rem 0;
+  color: whitesmoke;
+  select{
+    margin-top: .2rem;
+    border-radius: 5px;
+    border:none;
+  };
+  option{
+    &:hover{background: red;}
+  }
   @media (max-width: 540px) {
     margin-top: 20px;
     margin-right: 16px;

@@ -55,6 +55,8 @@ const StyledInput = styled.input`
   font-size: 1rem;
   height: 100%;
   flex-grow: 2;
+  border: none;
+  border-radius: 5px;
   &:focus {
     outline: none;
   }
