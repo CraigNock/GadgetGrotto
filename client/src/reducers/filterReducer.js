@@ -1,4 +1,4 @@
-const initialState = { 
+ const initialState = { 
   baseItems: [], 
   displayItems: [], 
   sortOption: { type: 'none', elv: 'none' },

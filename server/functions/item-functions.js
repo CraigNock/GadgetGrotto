@@ -1,4 +1,4 @@
-// const items = require("../data/items.json");
+const items = require("../data/fixedItems.json");
 const { MongoClient } = require('mongodb');
 const assert = require('assert');
 
@@ -22,30 +22,36 @@ const sortByStock = (a, b) => {
 // function that will initially fetch all the items to the server //
 // ************************************************************** //
 // checks that global items storage has been populated, if not, populates from db
+
+////MONGODB////
+// const retrieveAllItems = async () => {
+//   if (ITEMS.length > 0) return;
+// 	const client = new MongoClient('mongodb://localhost:27017', {
+// 	useUnifiedTopology: true,
+// 	});
+// 	try{
+//     await client.connect();
+//     console.log('retrive connecto');
+//     const db = client.db('ecommerce');
+//     const itemArr = await db.collection('items')
+//       .find()
+//       .toArray() 
+//       ITEMS = JSON.parse(JSON.stringify(itemArr));
+//       console.log('ITEMS RETRIEVED', ITEMS[0]._id);
+//       client.close();
+//       console.log('retrive disconnecto');
+//       return;
+  
+//   } catch (err) {
+//     console.log('error', err);
+//   };
+// };
+
+////FOR JSON FILE DATA////
 const retrieveAllItems = async () => {
   if (ITEMS.length > 0) return;
-	const client = new MongoClient('mongodb://localhost:27017', {
-	useUnifiedTopology: true,
-	});
-	try{
-    await client.connect();
-    console.log('retrive connecto');
-    const db = client.db('ecommerce');
-    const itemArr = await db.collection('items')
-      .find()
-      .toArray() 
-      ITEMS = JSON.parse(JSON.stringify(itemArr));
-      console.log('ITEMS RETRIEVED', ITEMS[0]._id);
-      client.close();
-      console.log('retrive disconnecto');
-      return;
-  
-  } catch (err) {
-    console.log('error', err);
-  };
-};
-
-
+  ITEMS = items;
+}
 // ****************************************************************** //
 // function that will filter the data by category specified by the user //
 // ****************************************************************** //
@@ -62,6 +68,7 @@ const filterCategory = async (req, res) => {
   res.send(filteredItems);
 };
 
+////MONGODB////
 // const filterCategory = async (req, res) => {
 // 	const { catagory } = req.params;
 // 	const client = new MongoClient('mongodb://localhost:27017', {
@@ -106,6 +113,7 @@ const getSearchResults = async (req, res) => {
   res.send(getSearchResults);
 };
 
+////MONGODB////
 // const getSearchResults = async (req, res) => {  
 //   const { userInput } = req.params;
 //   const client = new MongoClient('mongodb://localhost:27017', {
@@ -132,6 +140,7 @@ const getSearchResults = async (req, res) => {
 // ********************************************** //
 // returns the information of the specified item  //
 // ********************************************** //
+
 const getItemInformation = async (req, res) => {  
   if (ITEMS.length < 1) await retrieveAllItems();
 
