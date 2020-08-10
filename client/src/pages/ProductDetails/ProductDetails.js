@@ -16,6 +16,25 @@ function ProductDetails() {
   const COLORS = useSelector((state) => state.designSetting);
   const { productId } = useParams();
   const [companyName, setCompanyName] = React.useState('');
+
+// get item details from state:
+  let dataInState = useSelector(getProductDetails);
+  // selector must be used outside function call:
+  const inits = useSelector(parseInitialItems);
+  
+  const {
+    name,
+    price,
+    body_location,
+    category,
+    imageSrc,
+    numInStock,
+    companyId,
+  } = dataInState;
+
+// fetch sale items and check for sale price status in case user loads this page directly:
+  FetchInitItems();
+
   // function to get company name once the item data loads:
   const getCompanyName = (companyId) => {
     fetch(`/companyName/${companyId}`)
@@ -24,6 +43,7 @@ function ProductDetails() {
       })
       .then((company) => setCompanyName(company.companyName));
   };
+
   React.useEffect(() => {
     fetch(`/item/${productId}`)
       .then((res) => {
@@ -36,15 +56,10 @@ function ProductDetails() {
       });
 // eslint-disable-next-line
   }, []);
-  // get item details from state:
-  let dataInState = useSelector(getProductDetails);
-  // fetch sale items and check for sale price status in case user loads this page directly:
-  FetchInitItems();
-  // selector must be used outside function call:
-  const inits = useSelector(parseInitialItems);
+  
   // Determine Discount will return the original price string if item is not on sale, or the discounted value if it is on sale:
   const determineDiscount = () => {
-    if (inits !== undefined) {
+    if (dataInState.price && inits !== undefined) {
       const thereIsDiscount = inits.saleItems.filter(
         (item) => item._id === productId
       );
@@ -58,25 +73,8 @@ function ProductDetails() {
     }
   };
   const discount = determineDiscount();
-
-  if (Object.keys(dataInState).length === 0) {
-    return <Spinner />;
-  }
-
-  const {
-    name,
-    price,
-    body_location,
-    category,
-    imageSrc,
-    numInStock,
-    companyId,
-  } = dataInState;
-
-  // convert price to numerical value:
-  const numericalPrice = Number(price.slice(1));
-  //         rhyming string methods! ^
-
+  
+  
   // Styled components:
   const MainBox = styled.div`
     display: grid;
@@ -195,7 +193,9 @@ function ProductDetails() {
       margin: 4px;
     }
   `;
-
+  if (dataInState && Object.keys(dataInState).length === 0) {
+    return <Spinner />;
+  }
   return (
     <>
       <SearchBar />
@@ -215,7 +215,7 @@ function ProductDetails() {
             This stately item is worn on the{' '}
             {body_location ? body_location.toLowerCase() : ''} and combines
             sleekness and power into an elegant
-            {(numericalPrice ? numericalPrice : 0) < 100
+            {(price ? Number(price.slice(1)) : 0) < 100
               ? ', and affordable'
               : ''}{' '}
             package.
